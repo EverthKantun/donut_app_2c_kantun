@@ -1,3 +1,4 @@
+import 'package:donut_app_2c_kantun/utils/donut_tile.dart';
 import 'package:flutter/material.dart';
 
 class DonutTab extends StatelessWidget {
@@ -21,8 +22,11 @@ class DonutTab extends StatelessWidget {
         padding: EdgeInsets.all(12),
         // Prepa 1. cómo se distribuirán los elementos
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //para decir cuantas columnas usará
-            crossAxisCount: 2),
+          //para decir cuantas columnas usará
+          crossAxisCount: 2,
+          //relación de aspecto (proporción)
+          childAspectRatio: 1 / 1.5,
+        ),
         itemBuilder: (context, index) {
           //cada elemento individual
           return DonutTile(
