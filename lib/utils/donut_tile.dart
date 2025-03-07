@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class DonutTile extends StatelessWidget {
   final String donutFlavor;
   final String donutPrice;
+  final String donutStore;
   //dynamic no es un tipo de dato exacto, nos sirve para el color
   final dynamic donutColor;
   final String imageName;
@@ -10,6 +11,7 @@ class DonutTile extends StatelessWidget {
       {super.key,
       required this.donutFlavor,
       required this.donutPrice,
+      required this.donutStore,
       this.donutColor,
       required this.imageName});
 
@@ -49,9 +51,40 @@ class DonutTile extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               child: Image.asset(imageName),
-            )
+            ),
             //donut flavor text
+            Text(donutFlavor,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            Text(donutStore,
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 9)),
+            //espacio entre texto
+            SizedBox(
+              height: 4,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 15, right: 10, left: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(
+                    Icons.favorite_border,
+                    size: 24,
+                    color: Colors.black,
+                  ),
+                  Text(
+                    "Add",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+            )
 
+            //todo:
             //buttons
           ],
         ),
