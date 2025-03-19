@@ -72,8 +72,58 @@ class _HomePageState extends State<HomePage> {
                   PanCakesTab(),
                   PizzaTab()
                 ]),
-              )
+              ),
               //Carrito (cart)
+              Container(
+                color: Colors.white,
+                padding: EdgeInsets.all(16),
+                child: Row(
+                  //para alinear los elementos a los extremos
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        //alinear horizontalmente una columna
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("2 items | \$45",
+                              style: TextStyle(
+                                //tamaño de letra
+                                fontSize: 18,
+                                //negritas
+                                fontWeight: FontWeight.bold,
+                              )),
+                          Text("delivery charges included"),
+                        ],
+                      ),
+                    ),
+                    ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.pink,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 12)),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.shopping_cart,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "View Cart",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ))
+                  ],
+                ),
+              ),
             ],
           )),
     );
