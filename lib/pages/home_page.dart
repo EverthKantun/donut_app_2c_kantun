@@ -1,3 +1,4 @@
+import 'package:donut_app_2c_kantun/models/product.dart';
 import 'package:donut_app_2c_kantun/tabs/burger_tab.dart';
 import 'package:donut_app_2c_kantun/tabs/donut_tab.dart';
 import 'package:donut_app_2c_kantun/tabs/pancakes_tab.dart';
@@ -21,6 +22,18 @@ class _HomePageState extends State<HomePage> {
     const MyTab(iconPath: 'lib/icons/pancakes.png'),
     const MyTab(iconPath: 'lib/icons/pizza.png')
   ];
+  // Estado del carrito
+  List<Product> cartItems = [];
+  double totalPrice = 0.0;
+
+  // Método para agregar un producto al carrito
+  void addToCart(Product product) {
+    setState(() {
+      cartItems.add(product);
+      totalPrice += product.price;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -66,11 +79,11 @@ class _HomePageState extends State<HomePage> {
               // contenido de pestañas (TabBarView)
               Expanded(
                 child: TabBarView(children: [
-                  DonutTab(),
-                  BurgerTab(),
-                  SmoothiesTab(),
-                  PanCakesTab(),
-                  PizzaTab()
+                  DonutTab(addToCart: addToCart),
+                  BurgerTab(addToCart: addToCart),
+                  SmoothiesTab(addToCart: addToCart),
+                  PanCakesTab(addToCart: addToCart),
+                  PizzaTab(addToCart: addToCart),
                 ]),
               ),
               //Carrito (cart)
@@ -87,7 +100,8 @@ class _HomePageState extends State<HomePage> {
                         //alinear horizontalmente una columna
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("2 items | \$45",
+                          Text(
+                              "${cartItems.length} items | \$${totalPrice.toStringAsFixed(2)}",
                               style: TextStyle(
                                 //tamaño de letra
                                 fontSize: 18,

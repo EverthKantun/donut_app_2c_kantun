@@ -7,13 +7,16 @@ class DonutTile extends StatelessWidget {
   //dynamic no es un tipo de dato exacto, nos sirve para el color
   final dynamic donutColor;
   final String imageName;
-  const DonutTile(
-      {super.key,
-      required this.donutFlavor,
-      required this.donutPrice,
-      required this.donutStore,
-      this.donutColor,
-      required this.imageName});
+  final VoidCallback onAddToCart;
+  const DonutTile({
+    super.key,
+    required this.donutFlavor,
+    required this.donutPrice,
+    required this.donutStore,
+    this.donutColor,
+    required this.imageName,
+    required this.onAddToCart,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -66,20 +69,28 @@ class DonutTile extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(
-                    Icons.favorite_border,
-                    size: 24,
-                    color: Colors.black,
-                  ),
-                  Text(
-                    "Add",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.underline,
+                  GestureDetector(
+                    onTap: () {
+                      // Lógica para favoritos
+                    },
+                    child: Icon(
+                      Icons.favorite_border,
+                      size: 24,
                       color: Colors.black,
                     ),
                   ),
+                  GestureDetector(
+                    onTap: onAddToCart,
+                    child: Text(
+                      "Add",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        decoration: TextDecoration.underline,
+                        color: Colors.black,
+                      ),
+                    ),
+                  )
                 ],
               ),
             )
